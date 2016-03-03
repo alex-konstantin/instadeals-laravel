@@ -7,7 +7,10 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
+        "laravel-doctrine/orm" : "1.1.*",
         "laravel-doctrine/extensions": "1.0.*",
+        "laravel-doctrine/acl": "1.0.*",
+        "laravel-doctrine/migrations": "1.0.*",
         "gedmo/doctrine-extensions": "^2.4"
     },
     "require-dev": {
@@ -19,7 +22,8 @@
     },
     "autoload": {
         "classmap": [
-            "database"
+            "database",
+            "app/Models"
         ],
         "psr-4": {
             "App\\": "app/"

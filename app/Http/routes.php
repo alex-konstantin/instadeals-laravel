@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/proxy', ['as' => 'proxy', 'uses' => 'IndexController@index']);
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +24,38 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/', 'IndexController@index');
+
+    Route::group(['middleware' => 'auth'], function () {
+        Route::group(['namespace' => 'Instadeal'], function () {
+            Route::get('/instadeal/list', 'InstadealController@index');
+
+            Route::get('/instadeal/update/id/{id}', 'InstadealController@edit');
+            Route::post('/instadeal/update', 'InstadealController@update');
+
+            Route::get('/instadeal/create', 'InstadealController@create');
+            Route::post('/instadeal/create', 'InstadealController@store');
+
+            Route::get('/instadeal/delete/id/{id}', 'InstadealController@delete');
+        });
+
+        Route::group(['namespace' => 'User'], function () {
+            Route::get('/user/list', 'UserController@index');
+
+            Route::get('/user/update/id/{id}', 'UserController@edit');
+            Route::post('/user/update', 'UserController@update');
+
+            Route::get('/user/create', 'UserController@create');
+            Route::post('/user/create', 'UserController@store');
+        });
+    });
+
+    Route::any('/{any}', function ($any) {
+        return Redirect::route('proxy',['deal'=>$any]);
+    })->where('any', '.*');
+
 });
