@@ -16,7 +16,7 @@
                                 <label class="col-md-4 control-label">UserName</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="username">
+                                    <input type="text" class="form-control" name="username" required>
 
                                     @if ($errors->has('username'))
                                         <span class="help-block">
@@ -31,7 +31,7 @@
                                 <label class="col-md-4 control-label">E-Mail Address</label>
 
                                 <div class="col-md-6">
-                                    <input type="email" class="form-control" name="email">
+                                    <input type="email" class="form-control" name="email" required>
 
                                     @if ($errors->has('email'))
                                         <span class="help-block">
@@ -45,7 +45,7 @@
                                 <label class="col-md-4 control-label">Password</label>
 
                                 <div class="col-md-6">
-                                    <input type="password" class="form-control" name="password" id="password">
+                                    <input type="password" class="form-control" name="password" id="password" required>
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">
@@ -59,7 +59,7 @@
                                 <label class="col-md-4 control-label">Confirm Password</label>
 
                                 <div class="col-md-6">
-                                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
+                                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" required>
 
                                     @if ($errors->has('password_confirmation'))
                                         <span class="help-block">

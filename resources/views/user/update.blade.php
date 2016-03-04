@@ -10,7 +10,7 @@
                         <form class="form-horizontal user-update" role="form" method="POST" action="{{ url('/user/update') }}">
                             {!! csrf_field() !!}
 
-                            <input type="hidden" class="form-control" name="id" value="{{$user->getId()}}">
+                            <input type="hidden" class="form-control" name="id" value="{{$user->getId()}}" required>
 
                             <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">UserName</label>
@@ -31,7 +31,7 @@
                                 <label class="col-md-4 control-label">E-Mail Address</label>
 
                                 <div class="col-md-6">
-                                    <input type="email" class="form-control" name="email" value="{{$user->getEmail()}}">
+                                    <input type="email" class="form-control" name="email" value="{{$user->getEmail()}}" required>
 
                                     @if ($errors->has('email'))
                                         <span class="help-block">
@@ -45,7 +45,7 @@
                                 <label class="col-md-4 control-label">Password</label>
 
                                 <div class="col-md-6">
-                                    <input type="password" class="form-control" name="password" id="password">
+                                    <input type="password" class="form-control" name="password" id="password" required>
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">
@@ -59,7 +59,7 @@
                                 <label class="col-md-4 control-label">Confirm Password</label>
 
                                 <div class="col-md-6">
-                                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
+                                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" required>
 
                                     @if ($errors->has('password_confirmation'))
                                         <span class="help-block">
