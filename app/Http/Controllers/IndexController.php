@@ -26,6 +26,10 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
+        if (Auth::check()) {
+            return redirect('/instadeal/list');
+        }
+
         $deal = $request->get('deal');
         $instadeal = new Instadeal();
         list($defaultUrl, $brand) = $instadeal->getDefaultUrlAndBrand($request);
