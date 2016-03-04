@@ -12,6 +12,12 @@
 
                             <input type="hidden" class="form-control" name="id">
 
+                            @if (session('message'))
+                                <div class="alert alert-danger">
+                                    {{ session('message') }}
+                                </div>
+                            @endif
+                            
                             <div class="form-group{{ $errors->has('instadeal') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">Instadeal Id</label>
 
