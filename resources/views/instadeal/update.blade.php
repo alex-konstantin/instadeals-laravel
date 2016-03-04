@@ -31,7 +31,12 @@
                                 <label class="col-md-4 control-label">Brand</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="brand" value="{{$instadeal->getBrand()}}">
+                                    {{--<input type="text" class="form-control" name="brand" value="{{$instadeal->getBrand()}}">--}}
+                                    <select name="brand">
+                                        <option value="{{$instadeal->getBrand()}}" selected>{{$instadeal->getBrand()}}</option>
+                                        <option value="nume">nume</option>
+                                        <option value="belletto">belletto</option>
+                                    </select>
 
                                     @if ($errors->has('brand'))
                                         <span class="help-block">

@@ -31,13 +31,17 @@
                                 <label class="col-md-4 control-label">Brand</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="brand">
+                                    <select name="brand">
+                                        <option value="nume">nume</option>
+                                        <option value="belletto">belletto</option>
+                                    </select>
+{{--                                    <input type="text" class="form-control" name="brand">
 
                                     @if ($errors->has('brand'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('brand') }}</strong>
                                     </span>
-                                    @endif
+                                    @endif--}}
                                 </div>
                             </div>
 
