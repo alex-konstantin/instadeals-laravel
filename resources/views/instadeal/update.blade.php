@@ -38,7 +38,7 @@
 
                                 <div class="col-md-6">
                                     {{--<input type="text" class="form-control" name="brand" value="{{$instadeal->getBrand()}}">--}}
-                                    <select name="brand">
+                                    <select name="brand" class="form-control">
                                         <option value="{{$instadeal->getBrand()}}" selected>{{$instadeal->getBrand()}}</option>
                                         <option value="nume">nume</option>
                                         <option value="belletto">belletto</option>

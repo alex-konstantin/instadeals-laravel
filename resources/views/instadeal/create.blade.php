@@ -36,7 +36,7 @@
                                 <label class="col-md-4 control-label">Brand</label>
 
                                 <div class="col-md-6">
-                                    <select name="brand">
+                                    <select name="brand" class="form-control">
                                         <option value="nume">nume</option>
                                         <option value="belletto">belletto</option>
                                     </select>
