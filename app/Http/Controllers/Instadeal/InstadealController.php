@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Instadeal;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 
 use App\Models\Instadeals\Repositories\InstadealRepository;
 use App\Models\Instadeals\Entities\Instadeal;
