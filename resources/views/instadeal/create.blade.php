@@ -16,8 +16,7 @@
                                 <label class="col-md-4 control-label">Instadeal Id</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="instadeal">
-
+                                    <input type="text" class="form-control" name="instadeal" required>
                                     @if ($errors->has('instadeal'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('instadeal') }}</strong>
@@ -49,7 +48,8 @@
                                 <label class="col-md-4 control-label">Redirect Url</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="redirect_url" required>
+                                    <input type="text" class="form-control" name="redirect_url" required pattern="https?://.+">
+                                    <div class="small">http://example.com or https://exapmle.com</div>
 
                                     @if ($errors->has('redirect_url'))
                                         <span class="help-block">
