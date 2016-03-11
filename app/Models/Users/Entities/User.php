@@ -44,7 +44,8 @@ class User extends DoctrineModel implements
     /**
      * @return mixed
      */
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -52,7 +53,8 @@ class User extends DoctrineModel implements
      * @param mixed $id
      * @return User
      */
-    public function setId($id){
+    public function setId($id)
+    {
         $this->id = $id;
         return $this;
     }
@@ -60,14 +62,16 @@ class User extends DoctrineModel implements
     /**
      * @return mixed
      */
-    public function getUsername(){
+    public function getUsername()
+    {
         return $this->username;
     }
 
     /**
      * @return mixed
      */
-    public function setUsername($username){
+    public function setUsername($username)
+    {
         $this->username = $username;
         return $this;
 
@@ -76,14 +80,16 @@ class User extends DoctrineModel implements
     /**
      * @return mixed
      */
-    public function getEmail(){
+    public function getEmail()
+    {
         return $this->email;
     }
 
     /**
      * @return mixed
      */
-    public function setEmail($email){
+    public function setEmail($email)
+    {
         $this->email = $email;
         return $this;
 

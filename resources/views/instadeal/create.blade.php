@@ -55,7 +55,7 @@
 
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="redirect_url" required pattern="https?://.+">
-                                    <div class="small">http://example.com or https://exapmle.com</div>
+                                    <div class="small">http://example.com or https://example.com</div>
 
                                     @if ($errors->has('redirect_url'))
                                         <span class="help-block">

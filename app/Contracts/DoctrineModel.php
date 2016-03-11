@@ -23,14 +23,16 @@ abstract class DoctrineModel implements Jsonable, JsonSerializable, Arrayable {
     protected $hidden = [];
 
 
-    public function save(){
+    public function save()
+    {
 
         EntityManager::persist($this);
         EntityManager::flush();
         return $this;
     }
 
-    public function remove(){
+    public function remove()
+    {
         EntityManager::remove($this);
         EntityManager::flush();
         return;
@@ -42,8 +44,9 @@ abstract class DoctrineModel implements Jsonable, JsonSerializable, Arrayable {
      * @param  int $options
      * @return string
      */
-    public function toJson($options = 0){
-        if (!$options){
+    public function toJson($options = 0)
+    {
+        if (!$options) {
             $options = JSON_HEX_TAG | JSON_HEX_APOS;
         }
         return json_encode($this->jsonSerialize(), $options);
@@ -54,7 +57,8 @@ abstract class DoctrineModel implements Jsonable, JsonSerializable, Arrayable {
      *
      * @return array
      */
-    public function jsonSerialize(){
+    public function jsonSerialize()
+    {
         return $this->toArray();
     }
 
@@ -63,20 +67,23 @@ abstract class DoctrineModel implements Jsonable, JsonSerializable, Arrayable {
      *
      * @return array
      */
-    public function toArray(){
+    public function toArray()
+    {
         $objectProperties = get_object_vars($this);
-        foreach($this->getHiddenFields() as $hiddenFieldName){
-            if(isset($objectProperties[$hiddenFieldName]))
+        foreach ($this->getHiddenFields() as $hiddenFieldName) {
+            if (isset($objectProperties[$hiddenFieldName]))
                 unset($objectProperties[$hiddenFieldName]);
         }
         return $objectProperties;
     }
 
-    protected function getEntityManager(){
+    protected function getEntityManager()
+    {
         return $this->_em;
     }
 
-    protected function getHiddenFields(){
+    protected function getHiddenFields()
+    {
         return $this->hidden;
     }
 

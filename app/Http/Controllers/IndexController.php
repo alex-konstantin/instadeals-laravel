@@ -7,6 +7,7 @@ use App\Models\Instadeals\Entities\Instadeal;
 use App\Models\Instadeals\Repositories\InstadealRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Helpers\InstadealData;
 
 class IndexController extends Controller
 {
@@ -30,17 +31,17 @@ class IndexController extends Controller
             return redirect('/instadeal/list');
         }
 
-        $deal = $request->get('deal');
-        $instadeal = new Instadeal();
-        list($defaultUrl, $brand) = $instadeal->getDefaultUrlAndBrand($request);
+        $defaultUrl = app()->make('instadealData')->getDefaultUrl($request);
+        $brand = app()->make('instadealData')->getBrand($request);
 
+        $deal = $request->get('deal');
         $redirectUrl = $this->instadealRepo->getRedirectUrl($deal, $brand);
 
-        // If there is no result in database, redirect to default
         if (is_object($redirectUrl) && $redirectUrl->getResultRedirectUrl()) {
             return redirect($redirectUrl->getResultRedirectUrl());
-        } else {
-            return redirect($defaultUrl);
         }
+
+        // If there is no result in database, redirect to default
+        return redirect($defaultUrl);
     }
 }

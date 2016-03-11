@@ -40,7 +40,8 @@ abstract class DoctrineRepository extends EntityRepository{
      * @return \Illuminate\Pagination\LengthAwarePaginator
      */
 
-    public function getGridCollection(RepositoryFilterContract $repoFilter){
+    public function getGridCollection(RepositoryFilterContract $repoFilter)
+    {
         $filterParams = $repoFilter->getFilterBy();
         $order = $repoFilter->getOrderBy();
         $perPage = $repoFilter->getPerPage();
@@ -51,12 +52,12 @@ abstract class DoctrineRepository extends EntityRepository{
             ->from($this->getEntityName(), $this->_defaultAlias)
             ->orderBy($this->_defaultAlias . '.' . $this->_defaultSortBy, $this->_defaultSortOrder);
 
-        foreach ($filterParams as $fieldName => $filterValue){
-            if ($filterValue){
+        foreach ($filterParams as $fieldName => $filterValue) {
+            if ($filterValue) {
                 $qb->andWhere($qb->expr()->like($this->_defaultAlias . '.' . $fieldName, $qb->expr()->literal('%' . $filterValue. '%')));
             }
         }
-        if($order){
+        if ($order) {
             $qb->orderBy($this->_defaultAlias . '.' . $order['orderBy'], $order['orderDirection']);
         }
 

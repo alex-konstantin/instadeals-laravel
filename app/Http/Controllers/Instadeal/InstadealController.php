@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\Instadeals\Repositories\InstadealRepository;
 use App\Models\Instadeals\Entities\Instadeal;
 
-//use App\Helpers\Md5Hasher;
-//use Illuminate\Contracts\Hashing\Hasher as HasherContract;
-
 use App\Http\Controllers\RepositoryFilter;
 
 class InstadealController extends Controller
@@ -51,7 +48,7 @@ class InstadealController extends Controller
     public function update(Request $request)
     {
         $instadeal = $this->instadealRepo->find($request->input('id'));
-        $data = $instadeal->prepareData($request->all());
+        $data = $instadeal->saveData($request->all());
 
         if (!$data) {
             return Redirect::back()->withInput()->with('message','Please input valid address using http or https.');
@@ -68,7 +65,7 @@ class InstadealController extends Controller
     public function store(Request $request)
     {
         $instadeal = new Instadeal();
-        $data = $instadeal->prepareData($request->all());
+        $data = $instadeal->saveData($request->all());
 
         if (!$data) {
             return Redirect::back()->withInput()->with('message','Please input valid address using http or https.');

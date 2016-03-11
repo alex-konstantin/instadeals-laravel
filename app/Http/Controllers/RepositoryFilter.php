@@ -7,21 +7,25 @@ use Illuminate\Http\Request;
 class RepositoryFilter extends RepositoryFilterContract
 {
 
-    public function getOrderBy(){
+    public function getOrderBy()
+    {
         return $this->_order;
     }
 
-    public function getPerPage(){
+    public function getPerPage()
+    {
         return $this->_perPage;
     }
 
-    public function getFilterBy(){
+    public function getFilterBy()
+    {
         return $this->_params;
     }
 
-    public function prepareFromRequest(Request $request){
+    public function prepareFromRequest(Request $request)
+    {
         $sessionQueryData = \Session::get('grid_collection_query');
-        if ($sessionQueryData){
+        if ($sessionQueryData) {
             $this->setOrderBy([
                 'orderBy'        => $sessionQueryData['orderBy'],
                 'orderDirection' => $sessionQueryData['orderDirection'],

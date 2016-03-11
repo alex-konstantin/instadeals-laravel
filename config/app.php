@@ -159,6 +159,7 @@ return [
         LaravelDoctrine\ORM\DoctrineServiceProvider::class,
         App\Providers\Md5HashServiceProvider::class,
         LaravelDoctrine\Migrations\MigrationsServiceProvider::class,
+        App\Providers\HelperServiceProvider::class,
     ],
 
     /*

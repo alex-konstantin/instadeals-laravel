@@ -16,17 +16,20 @@ abstract class RepositoryFilterContract {
 
     abstract public function getFilterBy();
 
-    public function setOrderBy($orderBy){
+    public function setOrderBy($orderBy)
+    {
         $this->_order = $orderBy;
         return $this;
     }
 
-    public function setPerPage($perPage){
+    public function setPerPage($perPage)
+    {
         $this->_perPage = $perPage;
         return $this;
     }
 
-    public function setFilterBy($params){
+    public function setFilterBy($params)
+    {
         $this->_params = $params;
         return $this;
     }

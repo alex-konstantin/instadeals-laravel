@@ -51,7 +51,7 @@ class UserController extends Controller
         $user->setUsername($request->input('username'))
             ->setEmail($request->input('email'));
 
-        if ($request->has('password')){
+        if ($request->has('password')) {
             $user->setPassword($this->hasher->make($request->input('password')));
         }
         $user->save();
