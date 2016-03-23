@@ -32,6 +32,11 @@ class InstadealController extends Controller
             'orderDirection' => 'DESC'
         ]);
 
+        if ($request->get('limit')) {
+            $request->fullUrlWithQuery();
+            $this->repositoryFilter->setPerPage($request->get('limit'));
+        }
+
         $instadeals = $this->instadealRepo->getGridCollection(
             $this->repositoryFilter
         );

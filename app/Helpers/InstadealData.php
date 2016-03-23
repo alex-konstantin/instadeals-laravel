@@ -32,7 +32,8 @@ class InstadealData
 
     public function getDefaultUrl(Request $request)
     {
-        $host = $request->server('HTTP_HOST');
+        //$host = $request->server('HTTP_HOST');
+        $host = 'bellettoinstadeals.com';
         switch (true) {
             case (str_contains(self::BELLETTO_INSTADEAL_HOST, $host)):
                 return self::BELLETTO_WEBSITE . self::DEFAULT_NUME_AND_BELLETTO_REDIRECT_PART;
@@ -49,7 +50,7 @@ class InstadealData
 
     public function getBrand(Request $request)
     {
-        if (str_contains($request->server('HTTP_HOST'), self::BELLETTO_INSTADEAL_HOST_DEFAULT)) {
+        if (str_contains(/*$request->server('HTTP_HOST')*/'bellettoinstadeals.com', self::BELLETTO_INSTADEAL_HOST_DEFAULT)) {
             return self::BELLETTO_BRAND;
         }
         return self::NUME_BRAND;

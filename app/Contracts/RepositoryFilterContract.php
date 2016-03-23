@@ -6,7 +6,7 @@ abstract class RepositoryFilterContract {
 
     protected $_order = [];
 
-    protected $_perPage = 15;
+    protected $_perPage = 50;
 
     protected $_params = [];
 
