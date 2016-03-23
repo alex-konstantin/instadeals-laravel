@@ -2,16 +2,12 @@
 
 namespace LaravelDoctrine\Extensions;
 
-use Doctrine\Common\Annotations\Reader;
-use Doctrine\Common\Persistence\Mapping\Driver\MappingDriver;
-use Doctrine\ORM\Configuration;
+use Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Gedmo\DoctrineExtensions;
 use Illuminate\Support\ServiceProvider;
 use LaravelDoctrine\Fluent\Extensions\GedmoExtensions;
 use LaravelDoctrine\Fluent\FluentDriver;
-use LaravelDoctrine\ORM\DoctrineManager;
-use Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain;
 
 class GedmoExtensionsServiceProvider extends ServiceProvider
 {
@@ -23,9 +19,10 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
     {
         $this->app['events']->listen('doctrine.extensions.booting', function () {
 
-            $this->app->make(DoctrineManager::class)->extendAll(function (Configuration $configuration) {
+            $registry = $this->app->make('registry');
 
-                $chain = $configuration->getMetadataDriverImpl();
+            foreach ($registry->getManagers() as $manager) {
+                $chain = $manager->getConfiguration()->getMetadataDriverImpl();
 
                 if ($this->hasAnnotationReader($chain)) {
                     $this->registerGedmoForAnnotations($chain);
@@ -34,12 +31,12 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
                 if ($this->hasFluentDriver($chain)) {
                     $this->registerGedmoForFluent($chain);
                 }
-            });
+            }
         });
     }
 
     /**
-     * @param MappingDriverChain $driver
+     * @param  MappingDriverChain $driver
      * @return bool
      */
     private function hasAnnotationReader(MappingDriverChain $driver)
@@ -54,7 +51,7 @@ class GedmoExtensionsServiceProvider extends ServiceProvider
     }
 
     /**
-     * @param MappingDriverChain $driver
+     * @param  MappingDriverChain $driver
      * @return bool
      */
     private function hasFluentDriver(MappingDriverChain $driver)
