@@ -33,21 +33,22 @@ class InstadealController extends Controller
         ]);
 
         if ($request->get('limit')) {
-            $request->fullUrlWithQuery();
             $this->repositoryFilter->setPerPage($request->get('limit'));
         }
 
         $instadeals = $this->instadealRepo->getGridCollection(
             $this->repositoryFilter
         );
+        $brandsArray = app()->make('instadealData')->getBrandsArray();
 
-        return view('instadeal.list', array('instadeals' => $instadeals));
+        return view('instadeal.list', array('instadeals' => $instadeals, 'brands' => $brandsArray));
     }
 
     public function edit(Request $request, $id)
     {
         $instadeal = $this->instadealRepo->find($id);
-        return view('instadeal.update', array('instadeal' => $instadeal));
+        $brandsArray = app()->make('instadealData')->getBrandsArray();
+        return view('instadeal.update', array('instadeal' => $instadeal, 'brands' => $brandsArray));
     }
 
     public function update(Request $request)
@@ -64,7 +65,8 @@ class InstadealController extends Controller
 
     public function create()
     {
-        return view('instadeal.create');
+        $brandsArray = app()->make('instadealData')->getBrandsArray();
+        return view('instadeal.create', array('brands' => $brandsArray));
     }
 
     public function store(Request $request)

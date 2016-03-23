@@ -37,11 +37,14 @@
                                 <label class="col-md-4 control-label">Brand</label>
 
                                 <div class="col-md-6">
-                                    {{--<input type="text" class="form-control" name="brand" value="{{$instadeal->getBrand()}}">--}}
+
                                     <select name="brand" class="form-control">
-                                        <option value="{{$instadeal->getBrand()}}" selected>{{$instadeal->getBrand()}}</option>
-                                        <option value="nume">nume</option>
-                                        <option value="belletto">belletto</option>
+                                        @foreach($brands as $brand)
+                                            <option value="{{ $brand }}"
+                                                @if ($brand == $instadeal->getBrand())
+                                                    selected
+                                                @endif>{{ $brand }}</option>
+                                        @endforeach
                                     </select>
 
                                     @if ($errors->has('brand'))

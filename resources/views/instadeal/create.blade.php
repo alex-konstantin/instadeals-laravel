@@ -37,16 +37,10 @@
 
                                 <div class="col-md-6">
                                     <select name="brand" class="form-control">
-                                        <option value="nume">nume</option>
-                                        <option value="belletto">belletto</option>
+                                        @foreach($brands as $brand)
+                                            <option value="{{ $brand }}">{{ $brand }}</option>
+                                        @endforeach
                                     </select>
-{{--                                    <input type="text" class="form-control" name="brand">
-
-                                    @if ($errors->has('brand'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('brand') }}</strong>
-                                    </span>
-                                    @endif--}}
                                 </div>
                             </div>
 
