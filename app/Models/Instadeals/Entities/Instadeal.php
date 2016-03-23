@@ -311,6 +311,14 @@ class Instadeal extends DoctrineModel
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getModified()
+    {
+        return $this->created;
+    }
+
     public function saveData($data)
     {
         $data = app()->make('instadealData')->prepareData($data);

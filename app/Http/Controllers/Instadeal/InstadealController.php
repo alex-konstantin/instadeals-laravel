@@ -28,7 +28,7 @@ class InstadealController extends Controller
     public function index(Request $request)
     {
         $this->repositoryFilter->setOrderBy([
-            'orderBy' => 'modified',
+            'orderBy' => 'created',
             'orderDirection' => 'DESC'
         ]);
 
